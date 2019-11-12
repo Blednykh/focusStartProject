@@ -1,4 +1,4 @@
-let allElements = document.querySelectorAll("*");
+/*let allElements = document.querySelectorAll("*");
 
 let coloredElementList = [];
 
@@ -51,7 +51,7 @@ let randomElement = getRandElement(allElements);
 
 setRandColor(randomElement);
 
-let interval = setInterval(changeColorInterval, 200);
+let interval = setInterval(changeColorInterval, 200);*/
 
   //////////
  //task 2//
