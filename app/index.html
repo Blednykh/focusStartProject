@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" >
     <link rel="stylesheet" href="css/clothing.css" type="text/css" >
     <link rel="stylesheet" href="css/home.css" type="text/css" >
+    <link rel="stylesheet" href="css/basket.css" type="text/css" >
+    <link rel="stylesheet" href="css/order.css" type="text/css" >
+    <link rel="stylesheet" href="css/order_step_1.css" type="text/css" >
+    <link rel="stylesheet" href="css/order_step_2.css" type="text/css" >
+    <link rel="stylesheet" href="css/order-end.css" type="text/css" >
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <title>Home</title>
     <script type="text/javascript">
@@ -32,17 +38,46 @@
                     Dashboard
                     <span class="o-button__o-ellipse">9+</span>
                 </button>
-                <svg class="l-header_pos_top__logo-favorites o-logo-favorites t-footer-logo"><use xlink:href="#favorites" /></svg>
-                <svg class="l-header_pos_top__logo-basket o-logo-basket t-footer-logo"><use xlink:href="#basket" /></svg>
+                <svg class="l-header_pos_top__logo-favorites o-logo-favorites t-footer-logo">
+                    <use xlink:href="#favorites"/>
+                </svg>
+                <div class="l-header_pos_top__basket-box">
+                    <a href="#basket">
+                        <svg class="l-header_pos_top__logo-basket o-logo-basket t-footer-logo">
+                        <use xlink:href="#basket"/>
+                    </svg>
+                    </a>
+
+                    <div class="basket-box__info">
+                        <div class="basket-box__info-top">
+                            <div class="basket-box__count">
+                                <p class="basket-box__count-top">In the basket:</p>
+                                <div class="basket-box__count-bottom">
+                                    <span class="basket-box__count-span"></span>
+                                    <svg class="o-arrow-logo basket-box__arrow-logo">
+                                        <use xlink:href="#arrow"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="basket-box__sum"></span>
+                        </div>
+                        <div class="basket-box__info-bottom"></div>
+                    </div>
+                </div>
+
                 <div class="o-profile-box">
                     <img class="o-profile-box__logo-profile" src="assets/img/user-icon/user-10@2x.jpg"/>
-                    <svg class="o-arrow-logo"><use xlink:href="#arrow" /></svg>
+                    <svg class="o-arrow-logo">
+                        <use xlink:href="#arrow" />
+                    </svg>
+
                 </div>
             </nav>
         </section>
 
         <section class="l-header_pos_bottom">
             <nav class="l-header_pos_bottom__nav category-list">
+
                 <ul class="category-list__ul">
                     <li class="category-list__li">
                         <span class="categories-list__item">
@@ -73,7 +108,18 @@
                     <li class="category-list__li">
                         <span class="categories-list__item" >Events</span>
                     </li>
-
+                    <template id="temp_type_nav-item-container">
+                        <section class="nav-item-container">
+                            <div class="nav-item-container__header">
+                                <div>
+                                    <h1 class="nav-item-container__title"></h1>
+                                    <h1 class="nav-item-container__losung"></h1>
+                                </div>
+                                <p class="nav-item-container__count"></p>
+                            </div>
+                            <div class="nav-item-container__content subcategories-list"></div>
+                        </section>
+                    </template>
                 </ul>
             </nav>
         </section>
@@ -122,33 +168,342 @@
     </section>
 
     <main class="l-main main_type_home">
-        <section class="main_type_home__content">
+        <section class="l-main-content main_type_home__content"></section>
+        <template>
+            <section class="l-main-content main_type_home__content">
 
-            <div class="home-menu-top"></div>
+                <div class="home-menu-top"></div>
 
-            <div class="home-menu-bottom">
-                <div class="home-menu-bottom__wrap">
-                    <!--  <section class="c-menu-item home-menu-bottom-item t-size-large">
-                          <img src="assets/img/home-product-4/image@2x.jpg" class="c-menu-item__img">
-                          <div class="c-menu-item__description">
-                              <div>
-                                  <p class="c-menu-item__supp">Supplier’s Name Here</p>
-                                  <p class="c-menu-item__prod">Product Name Here</p>
-                                  <p class="c-menu-item__price">$29,354.75</p>
+                <div class="home-menu-bottom">
+                    <div class="home-menu-bottom__wrap">
+                        <!--  <section class="c-menu-item home-menu-bottom-item t-size-large">
+                              <img src="assets/img/home-product-4/image@2x.jpg" class="c-menu-item__img">
+                              <div class="c-menu-item__description">
+                                  <div>
+                                      <p class="c-menu-item__supp">Supplier’s Name Here</p>
+                                      <p class="c-menu-item__prod">Product Name Here</p>
+                                      <p class="c-menu-item__price">$29,354.75</p>
+                                  </div>
+                                  <div>
+                                      <svg class="o-shape-logo c-menu-item__logo"><use xlink:href="#shape" /></svg>
+                                  </div>
+
                               </div>
-                              <div>
-                                  <svg class="o-shape-logo c-menu-item__logo"><use xlink:href="#shape" /></svg>
-                              </div>
-
-                          </div>
-                      </section>-->
+                          </section>-->
+                    </div>
+                    <div class="home-menu-bottom__wrap"></div>
                 </div>
+            </section>
+        </template>
+        <template id="temp_type_basket">
+            <section class="l-main-content">
+                <section class="main_type_basket_path o-path">
+                    <a href="#home" class="o-path__item">Home</a>
+                    <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
+                    <a href="" class="o-path__item">Cart</a>
+                </section>
+                <div class="main_type_basket__content">
+                    <div class="main_type_basket__box">
+                        <section class="main__basket">
+                            <table class="basket__basket-table">
+                                <tr class="basket-table__table-header">
+                                    <th class="basket-table__th"></th>
+                                    <th class="basket-table__th th_align_left">Item Detail</th>
+                                    <th class="basket-table__th">Price</th>
+                                    <th class="basket-table__th">QTY</th>
+                                    <th class="basket-table__th"></th>
+                                </tr>
+                                <template id="temp_type_basket-item">
+                                    <tr class="basket__basket-item">
+                                        <td>
+                                            <div class="basket-item__product">
+                                                <svg class="product__logo-cross"><use xlink:href="#cross"/></svg>
+                                                <img class="product__img" src=""/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="product__description">
+                                                <h2 class="description__product-name"></h2>
+                                                <p class="description__supplier-name"></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="basket-item__price"></span>
+                                        </td>
+                                        <td>
+                                            <input class="basket-item__input t-table-input o-input" placeholder="1"/>
+                                        </td>
+                                        <td>
+                                            <span class="basket-item__total-price"></span>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </table>
+                        </section>
+                        <section class="main__basket-footer">
+                            <div class="basket-footer__coupon-box">
+                                <input class="coupon-box__input o-input" placeholder="Coupon code"/>
+                                <button class="coupon-box__button o-button" disabled="true">Apply</button>
+                            </div>
+                            <div class="basket-footer__price">
+                                <div class="price__name">
+                                    <p class="price__item">Subtotal</p>
+                                    <p class="price__item">Shipping</p>
+                                </div>
+                                <div class="price__count">
+                                    <p class="price__item"></p>
+                                    <p class="price__item">$5.00</p>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="total-price-box">
+                            <div class="total-price-box__total-price">
+                                <span class="total-price-box__text">Total Amount</span>
+                                <span class="total-price-box__price">$254.84</span>
+                            </div>
+                            <a href="#order-address">
+                            <button class="total-price-box__button o-button">Process to Checkout</button></a>
+                        </div>
+                    </div>
+                    <a href="" class="basket__ad">
+                        <img  src="./assets/img/ad/ad@2x.jpg"/>
+                    </a>
+                </div>
+            </section>
+        </template>
+        <template id="temp_type_subcategory">
+            <section class="l-main-content">
+                <section class="main__path o-path">
+                    <a href="" class="o-path__item"></a>
+                    <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
+                    <a href="" class="o-path__item"></a>
+                </section>
+                <section class="main_type_menu__content">
+                    <h1 class="main_type_menu__h2"></h1>
+                    <div class="menu-box">
+                        <template id="temp_type_subcategory-list">
+                            <section class="c-menu-item menu-box__menu-item">
+                                <img src="" class="c-menu-item__img">
+                                <div class="c-menu-item__description">
+                                    <div>
+                                        <p class="c-menu-item__supp"></p>
+                                        <p class="c-menu-item__prod"></p>
+                                        <p class="c-menu-item__price"></p>
+                                    </div>
+                                    <div>
+                                        <svg class="o-shape-logo c-menu-item__logo"><use xlink:href="#shape" /></svg>
+                                    </div>
 
-                <div class="home-menu-bottom__wrap"></div>
+                                </div>
+                            </section>
+                        </template>
+                    </div>
+                    <button class="main_type_menu__button o-button t-color-green t-bg-white">View More Items</button>
+                </section>
+            </section>
+        </template>
+        <template id="temp_type_address">
+            <section class="l-main-content">
+                <section class="main_type_order_path o-path">
+                    <a href="" class="o-path__item">Home</a>
+                    <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
+                    <a href="" class="o-path__item">Cart</a>
+                    <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
+                    <a href="" class="o-path__item">Checkout</a>
+                </section>
+                <div class="main_type_order__content">
+                    <div class="order__step-box">
+                        <span class="order__step1">Shipping Address</span>
+                        <span class="order__step2">Payment</span>
+                    </div>
 
-            </div>
+                    <div class="order-box">
+                        <div class="order-box__input-box">
+                            <div class="input-box__item">
+                                <p class="input-box__input-title">First Name*</p>
+                                <input class="input-box__input o-input" placeholder="Jhone"/>
+                            </div>
+                            <div class="input-box__item">
+                                <p class="input-box__input-title">Last Name*</p>
+                                <input class="input-box__input o-input" placeholder="Smith"/>
+                            </div>
+                            <div class="input-box__item">
+                                <p class="input-box__input-title">Company Name</p>
+                                <input class="input-box__input o-input" placeholder="Rosuson Industries"/>
+                            </div>
+                            <div class="input-box__item">
+                                <p class="input-box__input-title">Country*</p>
+                                <input class="input-box__input o-input" placeholder="United Kingdom (UK)"/>
+                            </div>
+                            <div class="input-box__item">
+                                <p class="input-box__input-title">Town / City*</p>
+                                <input class="input-box__input o-input" placeholder="eg. New york"/>
+                            </div>
+                            <div class="input-box__item">
+                                <p class="input-box__input-title">Postcode*</p>
+                                <input class="input-box__input o-input" placeholder="eg. 358745"/>
+                            </div>
+                            <div class="input-box__item input-box__item_length_wide">
+                                <div class="input-box__title-box">
+                                    <span class="input-box__input-title">Address*</span>
+                                    <span class="required__box">*Required</span>
+                                </div>
+                                <input class="input-box__input o-input required__input" placeholder="eg. 2nd steer, Costrica, Uk 354548" />
+                                <!--<input class="input-box__input o-input required__input" placeholder="eg. 2nd steer, Costrica, Uk 354548" required="false"/>-->
+                            </div>
+                            <div class="input-box__item">
+                                <p class="input-box__input-title">Email Address*</p>
+                                <input class="input-box__input o-input" placeholder="abc@xyz.com"/>
+                            </div>
+                            <div class="input-box__item">
+                                <p class="input-box__input-title">Phone</p>
+                                <input class="input-box__input o-input" placeholder="eg. 94 788 1221"/>
+                            </div>
+                            <div class="input-box__item checkbox-box">
+                                <input class="o-checkbox" type="checkbox" id="checkbox1" checked/>
+                                <label class="label" for="checkbox1">Create an Account?</label>
+                                <input class="o-checkbox" type="checkbox" id="checkbox2"/>
+                                <label class="label" for="checkbox2">Create an Account?</label>
+                            </div>
 
-        </section>
+                        </div>
+                        <div class="order-box__button-box">
+                            <a href="#basket">
+                                <button class="o-button order-box__button t-bg-white">Back</button>
+                            </a>
+                            <a href="#order-payment">
+                                <button class="o-button order-box__button ">Next</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+        <template id="temp_type_payment">
+            <section class="l-main-content">
+                <section class="main_type_order_path o-path">
+                    <a href="" class="o-path__item">Home</a>
+                    <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
+                    <a href="" class="o-path__item">Cart</a>
+                    <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
+                    <a href="" class="o-path__item">Checkout</a>
+                </section>
+                <div class="main_type_order__content">
+                    <div class="order__step-box">
+                        <span class="order-payment__step1">Shipping Address</span>
+                        <span class="order-payment__step2">Payment</span>
+                    </div>
+
+                    <div class="order-box order-payment-box">
+                        <div class="order-box__content">
+                            <div class="content__left-order-content">
+                                <p class="left-order-content__table-caption">Your Order</p>
+                                <div class="left-order-content__scroll-box">
+                                    <table class="order-box__table">
+                                        <!--
+                                        <tr class="order-table-item">
+                                            <td>
+                                                <div class="order-table-item__img-box img-box_size_full">
+                                                    <img class="order-table-item__img img_size_full" src="img/product-4/prod.jpg"/>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <h2 class="order-table-item__name">Product Name Here</h2>
+                                            </td>
+                                            <td>
+                                                <input class="order-table-item__input o-input t-table-input" placeholder="1"/>
+                                            </td>
+                                            <td>
+                                                <span class="order-table-item__price">$28.99</span>
+                                            </td>
+                                        </tr>-->
+                                        <template id="temp_type_payment-item">
+                                            <tr class="order-table-item">
+                                                <td>
+                                                    <div class="order-table-item__img-box">
+                                                        <img class="order-table-item__img" src=""/>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h2 class="order-table-item__name"></h2>
+                                                </td>
+                                                <td>
+                                                    <input class="order-table-item__input o-input t-table-input" placeholder="1"/>
+                                                </td>
+                                                <td>
+                                                    <span class="order-table-item__price"></span>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="content__right-order-content">
+                                <div class="order-box__input-box">
+                                    <div class="input-box__item input-box-payment__item">
+                                        <input class="o-radio" type="radio" id="radio1" checked/>
+                                        <label class="label" for="radio1">Credit Card / Debit Card</label>
+                                    </div>
+
+                                    <div class="input-box__item input-box-payment__item">
+                                        <p class="input-box__input-title">Name on Card</p>
+                                        <input class="input-box__input o-input" placeholder="Daniel Hecker"/>
+                                    </div>
+                                    <div class="input-box__item input-box-payment__item">
+                                        <p class="input-box__input-title">Card Number</p>
+                                        <input class="input-box__input o-input" placeholder="4121 4411 1414 9754"/>
+                                    </div>
+                                    <div class="input-box__item input-box-payment__item t-length-half">
+                                        <p class="input-box__input-title">Valid Trough</p>
+                                        <input class="input-box__input o-input" placeholder="MM / DD"/>
+                                    </div>
+                                    <div class="input-box__item input-box-payment__item t-length-half">
+                                        <p class="input-box__input-title">CVV</p>
+                                        <input class="input-box__input o-input" placeholder="eg. 201"/>
+                                    </div>
+                                    <div class="input-box__item input-box-payment__item">
+                                        <input class="o-radio" type="radio" id="radio2"/>
+                                        <label class="label" for="radio2">Paypal</label>
+                                    </div>
+
+                                    <div class="input-box__item input-box-payment__item">
+                                        <p class="input-box__input-title">Email Address</p>
+                                        <input class="input-box__input o-input" placeholder="abc@xyz.com"/>
+                                    </div>
+                                </div>
+
+                                <div class="input-box__item input-box-payment__item">
+                                    <a href="#order-end">
+                                        <button class="o-button t-size-l">Pay $254.84</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="#order-address">
+                                <button class="order-box__button-back o-button t-bg-white">Back</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+        <template id="temp_type_order-end">
+            <section class="l-main-content">
+                <section class="main__path o-path">
+                    <a href="" class="o-path__item">Home</a>
+                    <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
+                    <a href="" class="o-path__item">Cart</a>
+                    <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
+                    <a href="" class="o-path__item">Checkout</a>
+                </section>
+                <h1 class="main_type_order-step-3__h1">Congratulations</h1>
+                <h2 class="main_type_order-step-3__h2">Order Placed Successfully!</h2>
+                <a href="">
+                    <button class="main_type_order-step-3__button o-button t-text-upper">Back to Shopping</button>
+                </a>
+            </section>
+        </template>
     </main>
 
     <footer class="l-footer">
@@ -277,5 +632,7 @@
     </symbol>
 </svg>
 </body>
-<script type="text/javascript" src="js/script.js"></script>
+<script type="module" src="js/script.js"></script>
+<script type="module" src="js/module__subcategories-add.js"></script>
+<script type="module" src="js/module__subcategories-add.js"></script>
 </html>

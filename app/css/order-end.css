@@ -1,0 +1,35 @@
+.main_type_order-step-3{
+    text-align: center;
+    padding-bottom: 464px;
+}
+
+.main_type_order-step-3__h1{
+    font-size: 3.125rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #8bc34a;
+    margin-bottom: 20px;
+}
+
+.main_type_order-step-3__h2{
+    font-size: 1.25rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.46;
+    letter-spacing: normal;
+    margin-bottom: 96px;
+    color: #282828;
+}
+
+.main_type_order-step-3__button{
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    width: 220px;
+}
+

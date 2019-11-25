@@ -168,11 +168,16 @@ img {
     height: 40px;
     padding: 11px 20px 12px 20px;
 }
+
+
 .o-input::placeholder{
     color: #757575;
 }
 .o-input:focus{
     border: 2px solid #8bc34a;
+}
+.o-input:invalid{
+    border: 2px solid red;
 }
 
 .c-input-box{
@@ -346,8 +351,55 @@ img {
 }
 
 .l-header_pos_top__logo-basket{
+    position: relative;
     margin-right: 22px;
 }
+
+/*.l-header_pos_top__logo-basket:hover .l-header_pos_top__logo-basket:before{
+    display: block;
+}*/
+.l-header_pos_top__basket-box{
+    position: relative;
+}
+
+.l-header_pos_top__basket-box:hover .basket-box__info{
+   display: block;
+}
+.basket-box__info{
+    user-select: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 400px;
+    height: auto;
+    display: none;
+    box-shadow: 0.7px 10px 20px 0 rgba(9, 9, 9, 0.2);
+    background: #fff;
+    padding: 10px 20px 20px;
+    z-index: 1;
+}
+.basket-box__info-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #8bc34a;
+    padding-bottom: 10px;
+}
+.basket-box__count-bottom{
+    cursor: pointer;
+}
+.basket-box__count-bottom:hover .basket-box__arrow-logo{
+    fill: #282828;
+}
+.basket-box__info-bottom{
+    display: none;
+}
+.basket-item{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
 
 .l-header_pos_bottom{
     display: flex;
