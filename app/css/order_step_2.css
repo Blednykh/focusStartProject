@@ -1,26 +1,27 @@
-.order-payment-box{
+.order-payment-box {
     position: relative;
 }
 
-.order-payment-box:before{
+.order-payment-box:before {
     right: 30%;
 }
 
-.order-payment-box:after{
+.order-payment-box:after {
     right: 30%;
 }
 
-.order-box__content{
+.order-box__content {
     display: flex;
     justify-content: space-between;
     height: 100%;
 }
-.content__left-order-content{
+
+.content__left-order-content {
     height: 445px;
     border-right: 1px solid #c8c8c8;
 }
 
-.left-order-content__table-caption{
+.left-order-content__table-caption {
     font-size: 0.87rem;
     font-weight: 600;
     font-stretch: normal;
@@ -32,17 +33,17 @@
     padding-bottom: 14px;
 }
 
-.left-order-content__scroll-box{
+.left-order-content__scroll-box {
     overflow: auto;
     height: 395px;
     padding-right: 30px;
 }
 
-.order-table-item td{
+.order-table-item td {
     padding-bottom: 10px;
 }
 
-.order-table-item__img-box{
+.order-table-item__img-box {
     width: 68px;
     height: 50px;
     border-radius: 5px;
@@ -54,21 +55,21 @@
     margin-right: 20px;
 }
 
-.img-box_size_full{
+.img-box_size_full {
     padding: 0;
 }
 
-.order-table-item__img{
+.order-table-item__img {
     height: 100%;
     width: 100%;
 }
 
-.img_size_full{
+.img_size_full {
     width: 100%;
     height: 100%;
 }
 
-.order-table-item__name{
+.order-table-item__name {
     font-size: 0.87rem;
     font-weight: 600;
     font-stretch: normal;
@@ -79,11 +80,12 @@
     margin-right: 40px;
     white-space: nowrap;
 }
-.order-table-item__input{
+
+.order-table-item__input {
     margin-right: 45px;
 }
 
-.order-table-item__price{
+.order-table-item__price {
     font-size: 0.87rem;
     font-weight: 500;
     font-stretch: normal;
@@ -95,7 +97,7 @@
 }
 
 
-.content__right-order-content{
+.content__right-order-content {
     width: 415px;
     padding: 0 0 0 45px;
     display: flex;
@@ -105,31 +107,33 @@
     height: 100%;
 }
 
-.input-box-payment__item{
+.input-box-payment__item {
     width: 100%;
 }
-.input-box-payment__item:last-child{
+
+.input-box-payment__item:last-child {
     margin-bottom: 0;
 }
 
-.t-length-half{
+.t-length-half {
     width: calc(50% - 10px);
 }
 
-.t-size-l{
-   width: 100%;
+.t-size-l {
+    width: 100%;
 }
 
-.order-box__button-back{
+.order-box__button-back {
     position: absolute;
     bottom: 30px;
 }
-@media all and (max-width:1250px) {
-    .t-length-half{
+
+@media all and (max-width: 1250px) {
+    .t-length-half {
         width: 100%;
     }
 
-    .order-payment-box{
+    .order-payment-box {
         height: 720px;
     }
 }

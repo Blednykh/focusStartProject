@@ -1,6 +1,6 @@
-import {sendRequest} from "./module_api.js";
+import {sendRequest} from "./apiModule.js";
 
-export function setHeaderBottomContent(element, number, HeaderBottomItems, basket, router){
+export function setHeaderSubcategoriesContent(element, number, HeaderBottomItems, basket, router) {
 
     let title, losung, count, subcategoriesList;
 
@@ -14,14 +14,14 @@ export function setHeaderBottomContent(element, number, HeaderBottomItems, baske
 
     h1__title.innerText = "Loading...";
 
-    let categoriesListItem =  element.querySelector(".categories-list__item");
+    let categoriesListItem = element.querySelector(".categories-list__item");
 
-    element.addEventListener("mouseover", (e)=>{
-        if(e.target===element||e.target===categoriesListItem){
+    element.addEventListener("mouseover", (e) => {
+        if (e.target === element || e.target === categoriesListItem) {
             let pathPart = HeaderBottomItems[number].split(" ").join("-").toLowerCase();
 
-            sendRequest('GET',`http://localhost:3000/data/goods-categories/${pathPart}.json`)
-                .then(response =>{
+            sendRequest('GET', `http://localhost:3000/data/goods-categories/${pathPart}.json`)
+                .then(response => {
                     title = response.title;
                     losung = response.losung;
                     count = response.count;
@@ -47,29 +47,23 @@ export function setHeaderBottomContent(element, number, HeaderBottomItems, baske
 
                     p.innerText = count + " items";
 
-
-
-                    subcategoriesList.forEach(column=>{
-
+                    subcategoriesList.forEach(column => {
                         let ul = document.createElement("ul");
 
                         ul.className = "subcategories-list__column";
-                        column.forEach(item=>{
+                        column.forEach(item => {
 
                             let li = document.createElement("li");
 
                             let a = document.createElement("a");
 
                             li.className = "subcategories-list__li";
-
                             a.innerText = item;
-
-                            a.href=`#${item.replace(/\s+/g, '')}`;
-
+                            a.href = `#${item.replace(/\s+/g, '')}`;
                             li.appendChild(a);
                             ul.appendChild(li);
 
-                            li.addEventListener("click", ()=>{
+                            li.addEventListener("click", () => {
                                 router.addHash(title, item);
                             })
                         });

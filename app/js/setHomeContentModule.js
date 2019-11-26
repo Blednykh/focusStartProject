@@ -1,4 +1,5 @@
-import {sendRequest} from "./module_api.js";
+import {sendRequest} from "./apiModule.js";
+
 const HOME_ITEMS_URL_LIST = [
     "http://localhost:3000/data/home-items/homeItemsA.json",
     "http://localhost:3000/data/home-items/homeItemsB.json"
@@ -30,9 +31,9 @@ function createMenuItem(basket, marketItem, priority, size) {
 
     supp.innerText = marketItem.supp;
     prod.innerText = marketItem.prod;
-    price.innerText = "$"+marketItem.price;
+    price.innerText = "$" + marketItem.price;
 
-    svg.addEventListener("click", ()=>{
+    svg.addEventListener("click", () => {
         basket.addGood(marketItem);
     });
 
@@ -40,19 +41,18 @@ function createMenuItem(basket, marketItem, priority, size) {
 }
 
 
-
 export function setHomeContent(menuTopElements, menuBottomLeftElements, menuBottomRightElements, basket) {
 
     let url = HOME_ITEMS_URL_LIST[Math.floor(Math.random() * HOME_ITEMS_URL_LIST.length)];
 
-    sendRequest('GET',url)
-        .then(response=>{
+    sendRequest('GET', url)
+        .then(response => {
             let marketItems = response;
 
             marketItems
                 .filter(item => item.type === "top")
                 .forEach(item => {
-                    menuTopElements.appendChild(createMenuItem(basket, item,"top"))
+                    menuTopElements.appendChild(createMenuItem(basket, item, "top"))
                 });
 
             marketItems
@@ -60,11 +60,11 @@ export function setHomeContent(menuTopElements, menuBottomLeftElements, menuBott
                     return item.type !== "top"
                 }).forEach((item, i) => {
                 if (i === 0) {
-                    menuBottomLeftElements.appendChild(createMenuItem(basket, item,"", "large"));
+                    menuBottomLeftElements.appendChild(createMenuItem(basket, item, "", "large"));
                     return;
                 }
                 if (i === 9) {
-                    menuBottomRightElements.appendChild(createMenuItem(basket, item,"", "large"));
+                    menuBottomRightElements.appendChild(createMenuItem(basket, item, "", "large"));
                     return;
                 }
                 if (i % 2 === 0) {

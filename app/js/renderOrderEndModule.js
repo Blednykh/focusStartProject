@@ -1,4 +1,4 @@
-export function renderOrderEnd(){
+export function renderOrderEnd() {
     let mainElement = document.querySelector(".l-main");
 
     let mainContent = mainElement.querySelector(".l-main-content");
@@ -12,19 +12,18 @@ export function renderOrderEnd(){
     let clone = temp.content.cloneNode(true);
 
     mainElement.appendChild(clone);
-    setTimeout(()=>{
+
+    setTimeout(() => {
         let loader = document.querySelector(".loader-box");
 
-        if(loader!==null){
+        if (loader !== null) {
             let temp = document.getElementById("temp_type_order-end");
 
             let orderClon = temp.content.cloneNode(true);
 
             loader.replaceWith(orderClon);
-
         }
-
-    },2000);
+    }, 2000);
 
 
 }

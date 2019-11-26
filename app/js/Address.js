@@ -1,5 +1,5 @@
 export class Address {
-    constructor(){
+    constructor() {
         this.firstName = "";
         this.lastName = "";
         this.companyName = "";
@@ -11,23 +11,17 @@ export class Address {
         this.phone = "";
     }
 
-   getAddress(){
-       return {
-           firstName: this.firstName,
-           lastName: this.lastName,
-           companyName: this.companyName,
-           country: this.country,
-           town: this.town,
-           postcode: this.postcode,
-           address: this.address,
-           email: this.email,
-           phone: this.phone
-       }
-   }
-
-
-
-
-
-
+    getAddress() {
+        return {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            companyName: this.companyName,
+            country: this.country,
+            town: this.town,
+            postcode: this.postcode,
+            address: this.address,
+            email: this.email,
+            phone: this.phone
+        }
+    }
 }

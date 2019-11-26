@@ -1,12 +1,14 @@
-import {sendRequest} from "./module_api.js";
+import {sendRequest} from "./apiModule.js";
 
 function renderPage(basket, title, item) {
-    let path__item = document.querySelectorAll(".o-path__item");
-    path__item[0].innerText = title;
-    path__item[1].innerText = item;
-    let h2 = document.querySelector(".main_type_menu__h2");
-    h2.innerText = item;
+    let pathItem = document.querySelectorAll(".o-path__item");
 
+    pathItem[0].innerText = title;
+    pathItem[1].innerText = item;
+
+    let h2 = document.querySelector(".main_type_menu__h2");
+
+    h2.innerText = item;
 
     let pathPart = item.split(" ").join("-").toLowerCase();
 
@@ -17,11 +19,12 @@ function renderPage(basket, title, item) {
 
     let url = HOME_SUB_URL_LIST[Math.floor(Math.random() * HOME_SUB_URL_LIST.length)];
 
-    sendRequest('GET',url)
-        .then(response=>{
+    sendRequest('GET', url)
+        .then(response => {
             let marketItem = response;
 
             let menuBox = document.querySelector(".menu-box");
+
             marketItem
                 .forEach(item => {
                     let temp = document.getElementById("temp_type_subcategory-list");
@@ -29,6 +32,7 @@ function renderPage(basket, title, item) {
                     let clon = temp.content.cloneNode(true);
 
                     let productImg = clon.querySelector(".c-menu-item__img");
+
                     productImg.src = item.img;
 
                     let productName = clon.querySelector(".c-menu-item__prod");
@@ -44,7 +48,8 @@ function renderPage(basket, title, item) {
                     productPice.innerText = `$${item.price}`;
 
                     let svg = clon.querySelector(".o-shape-logo");
-                    svg.addEventListener("click", ()=>{
+
+                    svg.addEventListener("click", () => {
                         basket.addGood(item);
                     });
                     menuBox.appendChild(clon);
@@ -53,13 +58,12 @@ function renderPage(basket, title, item) {
         })
 }
 
-export function renderSubcategoryPage(basket, title, item){
+export function renderSubcategoryPage(basket, title, item) {
     let mainElement = document.querySelector(".l-main");
 
     let mainContent = mainElement.querySelector(".l-main-content");
 
     mainElement.removeChild(mainContent);
-
     mainElement.className = `l-main main_type_menu`;
 
     let temp = document.getElementById("temp_type_subcategory");
@@ -67,6 +71,5 @@ export function renderSubcategoryPage(basket, title, item){
     let pageClon = temp.content.cloneNode(true);
 
     mainElement.appendChild(pageClon);
-
     renderPage(basket, title, item);
 }

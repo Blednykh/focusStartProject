@@ -1,69 +1,70 @@
-function renderBasketTableContent(table, basket){
+function renderBasketTableContent(table, basket) {
     let {goodsList} = basket;
-    if(goodsList !== null && goodsList.length !== 0){
-        goodsList.forEach(item=>{
+    if (goodsList !== null && goodsList.length !== 0) {
+        goodsList.forEach(item => {
             let temp = document.getElementById("temp_type_basket-item");
 
             let clon = temp.content.cloneNode(true);
 
-            let product__img = clon.querySelector(".product__img");
+            let productImg = clon.querySelector(".product__img");
 
-            product__img.src = item.img;
+            productImg.src = item.img;
 
-            let description__productName = clon.querySelector(".description__product-name");
+            let descriptionProductName = clon.querySelector(".description__product-name");
 
-            description__productName.innerText = item.prod;
+            descriptionProductName.innerText = item.prod;
 
-            let description__supplierName = clon.querySelector(".description__supplier-name");
+            let descriptionSupplierName = clon.querySelector(".description__supplier-name");
 
-            description__supplierName.innerText = item.supp;
+            descriptionSupplierName.innerText = item.supp;
 
-            let basketItem__price = clon.querySelector(".basket-item__price");
+            let basketItemPrice = clon.querySelector(".basket-item__price");
 
-            basketItem__price.innerText = `$${item.price}`;
+            basketItemPrice.innerText = `$${parseFloat(item.price).toFixed(3)}`;
 
-            let basketItem__input = clon.querySelector(".basket-item__input");
+            let basketItemInput = clon.querySelector(".basket-item__input");
 
-            basketItem__input.placeholder = item.count;
+            basketItemInput.placeholder = item.count;
 
-            let basketItem__totalPrice = clon.querySelector(".basket-item__total-price");
-            basketItem__totalPrice.innerText = "$" + item.price * item.count;
+            let basketItemTotalPrice = clon.querySelector(".basket-item__total-price");
+            basketItemTotalPrice.innerText = "$" + (parseFloat(item.price) * item.count).toFixed(2);
 
-            basketItem__input.addEventListener("keyup",(e)=>{
-                if(Object.is(parseInt(basketItem__input.value),NaN)){
-                    basketItem__input.value = "";
-                }
-                else{
-                    if(parseInt(basketItem__input.value) === 0){
-                        basket.removeGoods(item);
+            basketItemInput.addEventListener("keyup", (e) => {
+                if (Object.is(parseInt(basketItemInput.value), NaN)) {
+                    basketItemInput.value = "";
+                } else {
+                    if (parseInt(basketItemInput.value) === 0) {
                         let basketItems = document.querySelectorAll(".basket__basket-item");
-                        basketItems.forEach(item=>item.remove());
+
+                        basket.removeGoods(item);
+                        basketItems.forEach(item => item.remove());
                         renderBasketTableContent(table, basket);
-                    }
-                    else{
-                        basket.changeItemCount(item, basketItem__input.value);
-                        basketItem__totalPrice.innerText = "$" + item.price * basketItem__input.value;
+                    } else {
+                        basket.changeItemCount(item, basketItemInput.value);
+                        basketItemTotalPrice.innerText = "$" + (item.price * basketItemInput.value).toFixed(3);
+                        basketItemInput.placeholder = basketItemInput.value;
                     }
                     renderTotalPrice(basket.sum)
                 }
             });
 
             //Удаление из корзины
-            let product__logoCross = clon.querySelector(".product__logo-cross");
-            product__logoCross.addEventListener("click",()=>{
+            let productLogoCross = clon.querySelector(".product__logo-cross");
+            productLogoCross.addEventListener("click", () => {
                 basket.removeGoods(item);
+
                 let basketItems = document.querySelectorAll(".basket__basket-item");
-                basketItems.forEach(item=>item.remove());
+
+                basketItems.forEach(item => item.remove());
                 renderBasketTableContent(table, basket);
                 renderTotalPrice(basket.sum)
             });
-
-
+            
             table.appendChild(clon);
-
         })
     }
-    else{
+    else {
+        //Пустая корзина
         let totalPriceBoxPrice = document.querySelector(".total-price-box__price");
 
         let totalPriceBoxButton = document.querySelector(".total-price-box__button");
@@ -77,21 +78,22 @@ function renderBasketTableContent(table, basket){
         table.replaceWith(h2);
     }
 }
-
-function renderTotalPrice(sum){
+//рендер подтабличных данных
+function renderTotalPrice(sum) {
     let mainElement = document.querySelector(".l-main");
 
-    let price__count = mainElement.querySelector(".price__count");
+    let priceCount = mainElement.querySelector(".price__count");
 
-    let price__item = price__count.querySelector(".price__item");
+    let priceItem = priceCount.querySelector(".price__item");
 
-    price__item.innerText = "$" + Math.round(sum * 10 * 10) / 100;
+    priceItem.innerText = "$" + Math.round(parseFloat(sum) * 10 * 10) / 100;
 
-    let totalPriceBox__price = mainElement.querySelector(".total-price-box__price");
-    totalPriceBox__price.innerText = "$" + Math.round((+sum + 5) * 10 * 10) / 100;
+    let totalPriceBoxPrice = mainElement.querySelector(".total-price-box__price");
+
+    totalPriceBoxPrice.innerText = "$" + Math.round((parseFloat(sum) + 5) * 10 * 10) / 100;
 }
 
-export function renderBasket(basket){
+export function renderBasket(basket) {
     let mainElement = document.querySelector(".l-main");
 
     let mainContent = mainElement.querySelector(".l-main-content");
@@ -101,14 +103,12 @@ export function renderBasket(basket){
 
     let temp = document.getElementById("temp_type_basket");
 
-    let BasketClon = temp.content.cloneNode(true);
+    let basketClon = temp.content.cloneNode(true);
 
-    mainElement.appendChild(BasketClon);
+    mainElement.appendChild(basketClon);
 
     let table = mainElement.querySelector(".basket__basket-table");
 
     renderTotalPrice(basket.sum);
-
     renderBasketTableContent(table, basket);
-
 }

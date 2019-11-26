@@ -1,7 +1,7 @@
 import {setHomeContent} from "./setHomeContentModule.js";
 
 
-export function renderHome(basket){
+export function renderHome(basket) {
     let mainElement = document.querySelector(".l-main");
 
     let mainContent = document.querySelector(".l-main-content");
