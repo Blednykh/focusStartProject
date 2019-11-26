@@ -1,0 +1,86 @@
+[
+  {
+    "id": "000401",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-1/image@2x.jpg",
+    "prod": "Gas Stoves Product 1A",
+    "price": "29.354"
+  },
+  {
+    "id": "000402",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-2/image@2x.jpg",
+    "prod": "Gas Stoves Product 2A",
+    "price": "29.354"
+  },
+  {
+    "id": "000403",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-3/image@2x.jpg",
+    "prod": "Gas Stoves Product 3A",
+    "price": "29.354"
+  },
+  {
+    "id": "000404",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-4/image@2x.jpg",
+    "prod": "Gas Stoves Product 4A",
+    "price": "29.354"
+  },
+  {
+    "id": "000405",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-5/image@2x.jpg",
+    "prod": "Gas Stoves Product 5A",
+    "price": "29.354"
+  },
+  {
+    "id": "000406",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-6/image@2x.jpg",
+    "prod": "Gas Stoves Product 6A",
+    "price": "29.354"
+  },
+  {
+    "id": "000407",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-7/image@2x.jpg",
+    "prod": "Gas Stoves Product 7A",
+    "price": "29.354"
+  },
+  {
+    "id": "000408",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-8/image@2x.jpg",
+    "prod": "Gas Stoves Product 8A",
+    "price": "29.354"
+  },
+  {
+    "id": "000409",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-9/image@2x.jpg",
+    "prod": "Gas Stoves Product 9A",
+    "price": "29.354"
+  },
+  {
+    "id": "000410",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-10/image@2x.jpg",
+    "prod": "Gas Stoves Product 10A",
+    "price": "29.354"
+  },
+  {
+    "id": "000411",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-11/image@2x.jpg",
+    "prod": "Gas Stoves Product 11A",
+    "price": "29.354"
+  },
+  {
+    "id": "000412",
+    "supp": "Supplier’s Name Here",
+    "img": "assets/img/image-12/image@2x.jpg",
+    "prod": "Gas Stoves Product 12A",
+    "price": "29.354"
+  }
+]

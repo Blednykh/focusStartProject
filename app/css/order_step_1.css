@@ -1,16 +1,12 @@
-.order__step1{
-    color: #8bc34a;
-}
-
 .order-box{
     position: relative;
 }
 
-.order-box:before{
+.order-address-box:before{
     left: 30%;
 }
 
-.order-box:after{
+.order-address-box:after{
     left: 30%;
 }
 

@@ -1,5 +1,6 @@
 function renderAddress(address,inputList){
     let addressData = Object.values(address.getAddress());
+
     inputList.forEach((item, i)=>{
         item.value = addressData[i];
     })
@@ -23,32 +24,49 @@ export function renderOrderAddress(basket,address){
 
 
     let inputList = mainElement.querySelectorAll(".input-box__input");
+
     renderAddress(address,inputList);
+
     inputList[0].addEventListener("keyup",()=>{
-        address.setFirstName(inputList[0].value);
+        address.firstName=inputList[0].value;
     });
     inputList[1].addEventListener("keyup",()=>{
-        address.setLastName(inputList[1].value);
+        address.lastName=inputList[1].value;
     });
     inputList[2].addEventListener("keyup",()=>{
-        address.setCompanyName(inputList[2].value);
+        address.companyName=inputList[2].value;
     });
     inputList[3].addEventListener("keyup",()=>{
-        address.setCountry(inputList[3].value);
+        address.country=inputList[3].value;
     });
     inputList[4].addEventListener("keyup",()=>{
-        address.setTown(inputList[4].value);
+        address.town=inputList[4].value;
     });
     inputList[5].addEventListener("keyup",()=>{
-        address.setPostcode(inputList[5].value);
+        address.postcode=inputList[5].value;
     });
     inputList[6].addEventListener("keyup",()=>{
-        address.setAddress(inputList[6].value);
+        address.address=inputList[6].value;
     });
     inputList[7].addEventListener("keyup",()=>{
-        address.setEmail(inputList[7].value);
+        address.email=inputList[7].value;
     });
     inputList[8].addEventListener("keyup",()=>{
-        address.setPhone(inputList[8].value)
+        address.phone=inputList[8].value;
     });
+
+    let requiredInputList = mainElement.querySelectorAll(".required__input");
+    let requiredBoxList = mainElement.querySelectorAll(".required__box");
+
+    let nextButton = document.querySelectorAll(".order-box__button")[1];
+    nextButton.addEventListener("click",()=>{
+        requiredInputList.forEach((item,i)=>{
+            item.required = true;
+            requiredBoxList[i].style = "display: block";
+
+            item.checkValidity() && (location.href="#order-payment");
+
+
+        })
+    })
 }

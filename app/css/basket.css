@@ -145,13 +145,13 @@
     padding-right: 29px;
 }
 
-.basket__ad{
+.basket__reclam{
     width: 20%;
     height: 20%;
     margin-left: 30px;
     cursor: pointer;
 }
-.basket__ad img{
+.basket__reclam-img{
     width: 100%;
     max-width: 303px;
 }

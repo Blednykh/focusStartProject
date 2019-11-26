@@ -7,9 +7,24 @@ export function renderOrderEnd(){
 
     mainElement.className = `l-main main_type_order-step-3`;
 
-    let temp = document.getElementById("temp_type_order-end");
+    let temp = document.getElementById("temp_type_loader");
 
-    let orderClon = temp.content.cloneNode(true);
+    let clone = temp.content.cloneNode(true);
 
-    mainElement.appendChild(orderClon);
+    mainElement.appendChild(clone);
+    setTimeout(()=>{
+        let loader = document.querySelector(".loader-box");
+
+        if(loader!==null){
+            let temp = document.getElementById("temp_type_order-end");
+
+            let orderClon = temp.content.cloneNode(true);
+
+            loader.replaceWith(orderClon);
+
+        }
+
+    },2000);
+
+
 }

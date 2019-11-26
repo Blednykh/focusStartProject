@@ -1,31 +1,32 @@
 
 
 export class Basket {
-    constructor(sum = 0, goodsList = []){
-        this.sum = Number(sum);
-        this.goodsList = goodsList;
+    constructor(){
+        let localStorageSum = localStorage.getItem("sum");
+
+        let localStorageGoodsList= JSON.parse(localStorage.getItem("goodsList"));
+
+        this.sum =  localStorageSum === null ? 0 : parseFloat(localStorageSum);
+        this.goodsList = localStorageGoodsList === null ? [] : localStorageGoodsList;
     }
 
-    addGood(good){
-        this.sum += Number(good.price.split(".").join("").split(",").join("."));
+    addGood(goods){
+        this.sum += parseFloat(goods.price);
 
-        let findIndex = this.goodsList.findIndex(item=> item.id === good.id);
+        let findIndex = this.goodsList.findIndex(item=> item.id === goods.id);
 
         if(findIndex!==-1){
             this.goodsList[findIndex].count++;
         }
         else{
-            good.count = 1;
-            this.goodsList.push({...good, price: good.price.split(".").join("").split(",").join(".")});
+            this.goodsList.push({...goods, count: 1});
         }
-        localStorage.setItem("sum", this.sum);
-        localStorage.setItem("goodsList", JSON.stringify(this.goodsList));
+        this.writeToLocalStorage()
     }
-    removeGoods(good){
-        this.sum = Number((this.sum - good.price * good.count).toFixed(5));
-        this.goodsList = this.goodsList.filter(item=> item.id !== good.id);
-        localStorage.setItem("sum", this.sum);
-        localStorage.setItem("goodsList", JSON.stringify(this.goodsList));
+    removeGoods(goods){
+        this.sum = parseFloat((this.sum - goods.price * goods.count).toFixed(5));
+        this.goodsList = this.goodsList.filter(item=> item.id !== goods.id);
+        this.writeToLocalStorage()
     }
 
     getCount(){
@@ -46,8 +47,18 @@ export class Basket {
         this.goodsList[changeItemId].count = parseInt(newCount);
         this.sum += Number((good.price * newCount).toFixed(5));
 
+        this.writeToLocalStorage()
+    }
+
+    clear(){
+        this.sum = 0;
+        this.goodsList = [];
         localStorage.setItem("sum", this.sum);
         localStorage.setItem("goodsList", JSON.stringify(this.goodsList));
     }
 
+    writeToLocalStorage(){
+        localStorage.setItem("sum", this.sum);
+        localStorage.setItem("goodsList", JSON.stringify(this.goodsList));
+    }
 }

@@ -1,7 +1,6 @@
 import {sendRequest} from "./module_api.js";
-import {renderSubcategoryPage} from "./module__render-subcategoryPage.js";
 
-export function setHeaderBottomContent(element, number, HeaderBottomItems, basket){
+export function setHeaderBottomContent(element, number, HeaderBottomItems, basket, router){
 
     let title, losung, count, subcategoriesList;
 
@@ -21,7 +20,7 @@ export function setHeaderBottomContent(element, number, HeaderBottomItems, baske
         if(e.target===element||e.target===categoriesListItem){
             let pathPart = HeaderBottomItems[number].split(" ").join("-").toLowerCase();
 
-            sendRequest('GET',`http://localhost:3000/data/good-categories/${pathPart}.json`)
+            sendRequest('GET',`http://localhost:3000/data/goods-categories/${pathPart}.json`)
                 .then(response =>{
                     title = response.title;
                     losung = response.losung;
@@ -71,8 +70,7 @@ export function setHeaderBottomContent(element, number, HeaderBottomItems, baske
                             ul.appendChild(li);
 
                             li.addEventListener("click", ()=>{
-                                renderSubcategoryPage(basket, title, item);
-
+                                router.addHash(title, item);
                             })
                         });
                         navItemContainerContent.appendChild(ul);

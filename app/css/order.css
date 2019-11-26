@@ -25,6 +25,10 @@
     color: #878786;
 }
 
+.step_color_green{
+    color: #8bc34a;
+}
+
 .order__step1{
     position: absolute;
     left: 26.7%;
@@ -90,6 +94,9 @@
 .input-box__input{
     font-size: 0.87rem;
     letter-spacing: 0.28px;
+}
+.input-box__input:required .required__box{
+    display: none;
 }
 
 

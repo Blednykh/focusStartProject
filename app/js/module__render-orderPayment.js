@@ -1,7 +1,9 @@
 function renderPayment(basket){
     let {goodsList} = basket;
 
-    if(goodsList !== null){
+    renderTotalPrice(basket.sum);
+
+    if(goodsList !== null && goodsList.length !== 0){
         goodsList.forEach(item=>{
             let temp = document.getElementById("temp_type_payment-item");
 
@@ -30,15 +32,14 @@ function renderPayment(basket){
                 }
                 else{
                     if(parseInt(orderTableItem__input.value) === 0){
-                      /*  basket.removeGoods(item);
-                        let basketItems = document.querySelectorAll(".basket__basket-item");
-                        basketItems.forEach(item=>item.remove());
-                        renderBasketTableContent(table, basket);*/
+                        basket.removeGoods(item);
                     }
                     else{
                         basket.changeItemCount(item, orderTableItem__input.value);
+                        orderTableItem__input.placeholder = orderTableItem__input.value;
                         orderTableItem__price.innerText = "$" + item.price * orderTableItem__input.value;
                     }
+                    renderTotalPrice(basket.sum);
                 }
             });
 
@@ -48,26 +49,59 @@ function renderPayment(basket){
 
         })
     }
+    else {
+        let paymentTotalPriceBox = document.querySelector(".payment-total-price-box");
 
+        paymentTotalPriceBox.innerText = "$0";
+        paymentTotalPriceBox.disabled = true;
+        let table = document.querySelector(".order-box__table");
+        let h2 = document.createElement("h2");
 
+        h2.innerText = "No Goods in Cart!";
+        table.replaceWith(h2);
+    }
+
+    let totalPriceBox = document.querySelector(".payment-total-price-box");
+
+    totalPriceBox.addEventListener("click", ()=>{
+        basket.clear();
+    })
 }
 
+function renderTotalPrice(sum){
+    let mainElement = document.querySelector(".l-main");
+
+    let totalPriceBox = mainElement.querySelector(".payment-total-price-box");
+
+    totalPriceBox.innerText = "Pay $" + Math.round((+sum + 5) * 10 * 10) / 100;
+}
 
 export function renderOrderPayment(basket, address){
-    console.log(address.getAddress());
+
     let mainElement = document.querySelector(".l-main");
 
     let mainContent = mainElement.querySelector(".l-main-content");
 
     mainElement.removeChild(mainContent);
-
     mainElement.className = `l-main main_type_order`;
 
-    let temp = document.getElementById("temp_type_payment");
+    let temp = document.getElementById("temp_type_loader");
 
-    let orderClon = temp.content.cloneNode(true);
+    let clone = temp.content.cloneNode(true);
 
-    mainElement.appendChild(orderClon);
+    mainElement.appendChild(clone);
+    setTimeout(()=>{
+        let loader = document.querySelector(".loader-box");
 
-    renderPayment(basket);
+        if(loader!==null){
+            let temp = document.getElementById("temp_type_payment");
+
+            let orderClon = temp.content.cloneNode(true);
+
+            loader.replaceWith(orderClon);
+
+            renderPayment(basket);
+        }
+
+    },2000);
 }

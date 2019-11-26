@@ -25,6 +25,7 @@
     <header class="l-header">
         <section class="l-header_pos_top">
 
+
             <svg class="l-header_pos_top__main-logo"><use xlink:href="#logo" /></svg>
 
             <div class="header__input-box c-input-box">
@@ -42,7 +43,7 @@
                     <use xlink:href="#favorites"/>
                 </svg>
                 <div class="l-header_pos_top__basket-box">
-                    <a href="#basket">
+                    <a href="#basket" title="Click to go to basket">
                         <svg class="l-header_pos_top__logo-basket o-logo-basket t-footer-logo">
                         <use xlink:href="#basket"/>
                     </svg>
@@ -126,7 +127,7 @@
 
     </header>
 
-    <section class="login" id="login" style="display: block" >
+    <section class="login" id="login" style="display: none" >
         <div class="login-box">
             <div class="login-box-top">
                 <svg class="login-box__logo-cross" onclick="closeLoginClick()"><use xlink:href="#cross" /></svg>
@@ -167,12 +168,43 @@
 
     </section>
 
-    <main class="l-main main_type_home">
-        <section class="l-main-content main_type_home__content"></section>
-        <template>
-            <section class="l-main-content main_type_home__content">
+    <template id="temp_type_loader">
+        <div class="l-main-content loader-box">
+            <div class="loading">
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+                <div class="obj"></div>
+            </div>
+        </div>
+    </template>
 
-                <div class="home-menu-top"></div>
+    <main class="l-main main_type_home">
+        <section class="l-main-content"></section>
+        <template id="temp_type_home">
+            <section class="l-main-content">
+
+                <div class="home-menu-top">
+                    <template id="temp_type_home-item">
+                        <section class="c-menu-item home-menu-bottom-item t-size-large">
+                            <img src="" class="c-menu-item__img">
+                            <div class="c-menu-item__description">
+                                <div>
+                                    <p class="c-menu-item__supp"></p>
+                                    <p class="c-menu-item__prod"></p>
+                                    <p class="c-menu-item__price"></p>
+                                </div>
+                                <div title="Add to cart">
+                                    <svg class="o-shape-logo c-menu-item__logo"><use xlink:href="#shape" /></svg>
+                                </div>
+                            </div>
+                        </section>
+                    </template>
+                </div>
 
                 <div class="home-menu-bottom">
                     <div class="home-menu-bottom__wrap">
@@ -198,9 +230,9 @@
         <template id="temp_type_basket">
             <section class="l-main-content">
                 <section class="main_type_basket_path o-path">
-                    <a href="#home" class="o-path__item">Home</a>
+                    <span class="o-path__item">Home</span>
                     <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
-                    <a href="" class="o-path__item">Cart</a>
+                    <span class="o-path__item">Cart</span>
                 </section>
                 <div class="main_type_basket__content">
                     <div class="main_type_basket__box">
@@ -265,8 +297,8 @@
                             <button class="total-price-box__button o-button">Process to Checkout</button></a>
                         </div>
                     </div>
-                    <a href="" class="basket__ad">
-                        <img  src="./assets/img/ad/ad@2x.jpg"/>
+                    <a class="basket__reclam">
+                        <img class="basket__reclam-img" src="assets/img/reclam/reclam@2x.jpg"/>
                     </a>
                 </div>
             </section>
@@ -274,9 +306,9 @@
         <template id="temp_type_subcategory">
             <section class="l-main-content">
                 <section class="main__path o-path">
-                    <a href="" class="o-path__item"></a>
+                    <span class="o-path__item"></span>
                     <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
-                    <a href="" class="o-path__item"></a>
+                    <span class="o-path__item"></span>
                 </section>
                 <section class="main_type_menu__content">
                     <h1 class="main_type_menu__h2"></h1>
@@ -305,55 +337,73 @@
         <template id="temp_type_address">
             <section class="l-main-content">
                 <section class="main_type_order_path o-path">
-                    <a href="" class="o-path__item">Home</a>
+                    <span class="o-path__item">Home</span>
                     <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
-                    <a href="" class="o-path__item">Cart</a>
+                    <span class="o-path__item">Cart</span>
                     <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
-                    <a href="" class="o-path__item">Checkout</a>
+                    <span class="o-path__item">Checkout</span>
                 </section>
                 <div class="main_type_order__content">
                     <div class="order__step-box">
-                        <span class="order__step1">Shipping Address</span>
+                        <span class="order__step1 step_color_green">Shipping Address</span>
                         <span class="order__step2">Payment</span>
                     </div>
 
-                    <div class="order-box">
+                    <div class="order-box order-address-box">
                         <div class="order-box__input-box">
                             <div class="input-box__item">
-                                <p class="input-box__input-title">First Name*</p>
-                                <input class="input-box__input o-input" placeholder="Jhone"/>
+                                <div class="input-box__title-box">
+                                    <span class="input-box__input-title">First Name*</span>
+                                    <span class="required__box" style="display: none">*Required</span>
+                                </div>
+                                <input class="input-box__input o-input required__input" placeholder="Jhone"/>
                             </div>
                             <div class="input-box__item">
-                                <p class="input-box__input-title">Last Name*</p>
-                                <input class="input-box__input o-input" placeholder="Smith"/>
+                                <div class="input-box__title-box">
+                                    <span class="input-box__input-title">Last Name*</span>
+                                    <span class="required__box" style="display: none">*Required</span>
+                                </div>
+                                <input class="input-box__input o-input required__input" placeholder="Smith"/>
                             </div>
                             <div class="input-box__item">
                                 <p class="input-box__input-title">Company Name</p>
                                 <input class="input-box__input o-input" placeholder="Rosuson Industries"/>
                             </div>
                             <div class="input-box__item">
-                                <p class="input-box__input-title">Country*</p>
-                                <input class="input-box__input o-input" placeholder="United Kingdom (UK)"/>
+                                <div class="input-box__title-box">
+                                    <span class="input-box__input-title">Country*</span>
+                                    <span class="required__box" style="display: none">*Required</span>
+                                </div>
+                                <input class="input-box__input o-input required__input" placeholder="United Kingdom (UK)"/>
                             </div>
                             <div class="input-box__item">
-                                <p class="input-box__input-title">Town / City*</p>
-                                <input class="input-box__input o-input" placeholder="eg. New york"/>
+                                <div class="input-box__title-box">
+                                    <span class="input-box__input-title">Town / City*</span>
+                                    <span class="required__box" style="display: none">*Required</span>
+                                </div>
+                                <input class="input-box__input o-input required__input" placeholder="eg. New york"/>
                             </div>
                             <div class="input-box__item">
-                                <p class="input-box__input-title">Postcode*</p>
-                                <input class="input-box__input o-input" placeholder="eg. 358745"/>
+                                <div class="input-box__title-box">
+                                    <span class="input-box__input-title">Postcode*</span>
+                                    <span class="required__box" style="display: none">*Required</span>
+                                </div>
+                                <input class="input-box__input o-input required__input" placeholder="eg. 358745"/>
                             </div>
                             <div class="input-box__item input-box__item_length_wide">
                                 <div class="input-box__title-box">
                                     <span class="input-box__input-title">Address*</span>
-                                    <span class="required__box">*Required</span>
+                                    <span class="required__box" style="display: none">*Required</span>
                                 </div>
-                                <input class="input-box__input o-input required__input" placeholder="eg. 2nd steer, Costrica, Uk 354548" />
+                                <input class="input-box__input o-input required__input" placeholder="eg. 2nd steer, Costrica, Uk 354548"/>
                                 <!--<input class="input-box__input o-input required__input" placeholder="eg. 2nd steer, Costrica, Uk 354548" required="false"/>-->
                             </div>
                             <div class="input-box__item">
-                                <p class="input-box__input-title">Email Address*</p>
-                                <input class="input-box__input o-input" placeholder="abc@xyz.com"/>
+                                <div class="input-box__title-box">
+                                    <span class="input-box__input-title">Email Address*</span>
+                                    <span class="required__box" style="display: none">*Required</span>
+                                </div>
+                                <input class="input-box__input o-input required__input" placeholder="abc@xyz.com"/>
                             </div>
                             <div class="input-box__item">
                                 <p class="input-box__input-title">Phone</p>
@@ -371,7 +421,7 @@
                             <a href="#basket">
                                 <button class="o-button order-box__button t-bg-white">Back</button>
                             </a>
-                            <a href="#order-payment">
+                            <a>
                                 <button class="o-button order-box__button ">Next</button>
                             </a>
                         </div>
@@ -382,16 +432,16 @@
         <template id="temp_type_payment">
             <section class="l-main-content">
                 <section class="main_type_order_path o-path">
-                    <a href="" class="o-path__item">Home</a>
+                    <span class="o-path__item">Home</span>
                     <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
-                    <a href="" class="o-path__item">Cart</a>
+                    <span class="o-path__item">Cart</span>
                     <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
-                    <a href="" class="o-path__item">Checkout</a>
+                    <span class="o-path__item">Checkout</span>
                 </section>
                 <div class="main_type_order__content">
                     <div class="order__step-box">
-                        <span class="order-payment__step1">Shipping Address</span>
-                        <span class="order-payment__step2">Payment</span>
+                        <span class="order__step1">Shipping Address</span>
+                        <span class="order__step2 step_color_green">Payment</span>
                     </div>
 
                     <div class="order-box order-payment-box">
@@ -400,23 +450,6 @@
                                 <p class="left-order-content__table-caption">Your Order</p>
                                 <div class="left-order-content__scroll-box">
                                     <table class="order-box__table">
-                                        <!--
-                                        <tr class="order-table-item">
-                                            <td>
-                                                <div class="order-table-item__img-box img-box_size_full">
-                                                    <img class="order-table-item__img img_size_full" src="img/product-4/prod.jpg"/>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h2 class="order-table-item__name">Product Name Here</h2>
-                                            </td>
-                                            <td>
-                                                <input class="order-table-item__input o-input t-table-input" placeholder="1"/>
-                                            </td>
-                                            <td>
-                                                <span class="order-table-item__price">$28.99</span>
-                                            </td>
-                                        </tr>-->
                                         <template id="temp_type_payment-item">
                                             <tr class="order-table-item">
                                                 <td>
@@ -474,7 +507,7 @@
 
                                 <div class="input-box__item input-box-payment__item">
                                     <a href="#order-end">
-                                        <button class="o-button t-size-l">Pay $254.84</button>
+                                        <button class="o-button t-size-l payment-total-price-box">Pay $254.84</button>
                                     </a>
                                 </div>
                             </div>
@@ -491,11 +524,11 @@
         <template id="temp_type_order-end">
             <section class="l-main-content">
                 <section class="main__path o-path">
-                    <a href="" class="o-path__item">Home</a>
+                    <span class="o-path__item">Home</span>
                     <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
-                    <a href="" class="o-path__item">Cart</a>
+                    <span class="o-path__item">Cart</span>
                     <svg class="o-arrow-logo o-path__arrow"><use xlink:href="#arrow" /></svg>
-                    <a href="" class="o-path__item">Checkout</a>
+                    <span class="o-path__item">Checkout</span>
                 </section>
                 <h1 class="main_type_order-step-3__h1">Congratulations</h1>
                 <h2 class="main_type_order-step-3__h2">Order Placed Successfully!</h2>

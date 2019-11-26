@@ -2,53 +2,40 @@ import {setHeaderBottomContent} from "./module__subcategories-add.js";
 import {sendRequest} from "./module_api.js";
 import {Basket} from "./Basket.js";
 import {createBasketBox} from "./module__basketBox-add.js";
-import {renderHome} from "./module__render-home.js";
-import {renderBasket} from "./module__render-basket.js";
+import {renderHome} from "./renderHomeModule.js";
+import {renderBasket} from "./renderBasketModule.js";
 import {renderOrderAddress} from "./module__render-orderAddress.js";
 import {renderOrderPayment} from "./module__render-orderPayment.js";
 import {renderOrderEnd} from "./module__render-orderEnd.js";
 import {Address} from "./Address.js";
+import {Router} from "./Router.js";
+import {renderSubcategoryPage} from "./renderSubcategoryPageModule.js";
 
 
-let sum = localStorage.getItem("sum");
-
-let goodsList = JSON.parse(localStorage.getItem("goodsList"));
-/*localStorage.removeItem("sum");
-localStorage.removeItem("goodList");*/
+let router = new Router();
 
 //Инициализация корзины
-let basket = (sum === null || goodsList === null) ? new Basket() : new Basket(sum, goodsList);
+let basket = new Basket();
+
+//Инициализация объекта с данными об адресе покупателя
 let address = new Address();
+
 //Заполнение мини-корзины в шапке
 createBasketBox(basket);
-
-//Событие для рендера страницы корзины
-let basket__svg = document.querySelector(".l-header_pos_top__logo-basket");
-
-basket__svg.addEventListener("click", ()=>{
-    renderBasket(basket,address);
-});
-
-
-
-
-
-
-//Рендер домашней страницы
-renderHome(basket);
-
 
 //Создание подкатегорий в шапке
 let categoryList__li = document.querySelectorAll(".category-list__li");
 
-
-
-sendRequest('GET',"http://localhost:3000/data/good-categories/categories.json")
+sendRequest('GET',"http://localhost:3000/data/goods-categories/categories.json")
     .then(response=>{
         let HeaderBottomItems = response;
 
-        categoryList__li.forEach((item, i) => setHeaderBottomContent(item, i, HeaderBottomItems, basket));
+        categoryList__li.forEach((item, i) => setHeaderBottomContent(item, i, HeaderBottomItems, basket, router));
     });
+
+
+//Рендер необходимой страницы
+locationHashChanged();
 
 function locationHashChanged() {
     switch (location.hash){
@@ -71,6 +58,21 @@ function locationHashChanged() {
         case "#order-end":{
             renderOrderEnd();
             break;
+        }
+       default:{
+           let findOpenedSubcategoryIndex = router.findIndexByHash(location.hash);
+
+           if(findOpenedSubcategoryIndex !== -1){
+               renderSubcategoryPage(
+                   basket,
+                   router.subcategoryData[findOpenedSubcategoryIndex].title,
+                   router.subcategoryData[findOpenedSubcategoryIndex].subcategoryItem
+               );
+           }
+           else{
+               location.href = "";
+           }
+
         }
 
     }

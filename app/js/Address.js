@@ -1,5 +1,3 @@
-
-
 export class Address {
     constructor(){
         this.firstName = "";
@@ -11,35 +9,6 @@ export class Address {
         this.address = "";
         this.email = "";
         this.phone = "";
-    }
-
-    setFirstName(firstName){
-        this.firstName = firstName;
-    }
-
-    setLastName(lastName){
-        this.lastName = lastName;
-    }
-    setCompanyName(companyName){
-        this.companyName = companyName;
-    }
-    setCountry(country){
-        this.country = country;
-    }
-    setTown(town){
-        this.town = town;
-    }
-    setPostcode(postcode){
-        this.postcode = postcode;
-    }
-    setAddress(address){
-        this.address = address;
-    }
-    setEmail(email){
-        this.email = email;
-    }
-    setPhone(phone){
-        this.phone = phone;
     }
 
    getAddress(){
